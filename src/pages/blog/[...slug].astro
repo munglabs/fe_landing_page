@@ -1,0 +1,80 @@
+---
+import { getCollection, render } from 'astro:content';
+import Giscus from '../../components/Giscus';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/#about' },
+  { label: 'Blog', href: '/blog' },
+];
+
+const footerLinks = [
+  { label: 'GitHub', href: 'https://github.com/munglabs' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@MungNgulik' },
+  { label: 'Contact', href: 'mailto:munglabs.com@gmail.com' },
+];
+---
+
+<BaseLayout title={`${post.data.title} — Munglabs`}>
+  <Navbar links={navLinks} />
+  <main id="main">
+    <article class="pt-28 pb-20 px-6">
+      <div class="max-w-3xl mx-auto">
+        <div class="mb-8">
+          <a href="/blog" class="text-sm text-mung-600 hover:text-mung-700 transition-colors inline-flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="m19 12-7 7 7-7"/></svg>
+            Back to blog
+          </a>
+        </div>
+
+        <header class="mb-10">
+          <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+            {post.data.title}
+          </h1>
+          <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-400">
+            <time datetime={post.data.date.toISOString()}>
+              {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+            {post.data.tags.length > 0 && (
+              <div class="flex flex-wrap gap-2">
+                {post.data.tags.map(tag => (
+                  <span class="px-2 py-0.5 rounded-full bg-mung-50 text-mung-600 text-xs">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+          {post.data.description && (
+            <p class="mt-4 text-lg text-slate-500">
+              {post.data.description}
+            </p>
+          )}
+        </header>
+
+        <div class="prose">
+          <Content />
+        </div>
+
+        <client:load>
+          <Giscus />
+        </client:load>
+      </div>
+    </article>
+  </main>
+  <Footer links={footerLinks} />
+</BaseLayout>

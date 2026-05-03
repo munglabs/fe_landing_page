@@ -1,0 +1,32 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+
+const footerLinks = [
+  { label: 'GitHub', href: 'https://github.com/munglabs' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@MungNgulik' },
+  { label: 'Contact', href: 'mailto:munglabs.com@gmail.com' },
+];
+
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/#about' },
+  { label: 'Blog', href: '/blog' },
+];
+---
+
+<BaseLayout title={title}>
+  <Navbar links={navLinks} />
+  <main id="main">
+    <slot />
+  </main>
+  <Footer links={footerLinks} />
+</BaseLayout>

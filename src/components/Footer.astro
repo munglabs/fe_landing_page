@@ -1,0 +1,40 @@
+---
+interface Link {
+  label: string;
+  href: string;
+}
+
+const { links = [] } = Astro.props;
+---
+
+<footer class="border-t border-slate-100 py-10 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-md bg-gradient-to-br from-mung-500 to-mung-700 flex items-center justify-center">
+          <span class="text-white font-bold text-xs font-mono">M</span>
+        </div>
+        <span class="text-sm text-slate-400">
+          mung<span class="text-mung-600">labs</span>
+        </span>
+      </div>
+
+      <p class="text-xs text-slate-400">
+        &copy; {new Date().getFullYear()} Munglabs. Just a lab.
+      </p>
+
+      <div class="flex items-center gap-6">
+        {links.map(link => (
+          <a
+            href={link.href}
+            class="text-xs text-slate-400 hover:text-slate-700 transition-colors duration-200"
+            target={link.href.startsWith('http') ? '_blank' : undefined}
+            rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>

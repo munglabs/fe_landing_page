@@ -1,0 +1,66 @@
+---
+const { titleLine1, titleLine2, subtitle, ctaText, ctaLink } = Astro.props;
+
+const arrowRight = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>`;
+const chevronDown = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>`;
+---
+
+<section class="relative pt-40 pb-28 px-6 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-mung-50/50 to-white pointer-events-none" />
+
+  <div class="absolute top-20 right-10 w-72 h-72 bg-mung-200/30 rounded-full blur-3xl animate-pulse-glow" />
+  <div class="absolute bottom-10 left-10 w-96 h-96 bg-mung-100/40 rounded-full blur-3xl animate-pulse-glow" style="animation-delay: 1.5s;" />
+
+  <div class="relative max-w-4xl mx-auto text-center">
+    <div class="animate-fade-in-up">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium text-mung-700 bg-mung-100 rounded-full mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-mung-500 animate-pulse" />
+        AI · Tech · Electronics · DIY
+      </span>
+    </div>
+
+    <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 animate-fade-in-up delay-100 leading-[1.1]">
+      {titleLine1}
+      <wbr />
+      {titleLine2}
+    </h1>
+
+    <p class="mt-6 text-lg sm:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-200">
+      {subtitle}
+    </p>
+
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-300">
+      <a
+        href={ctaLink}
+        class="group inline-flex items-center gap-2 px-7 py-3 text-sm font-medium text-white bg-mung-600 rounded-lg hover:bg-mung-700 transition-all duration-200 shadow-sm hover:shadow-md"
+      >
+        {ctaText}
+        <span class="transition-transform group-hover:translate-x-0.5" set:html={arrowRight} />
+      </a>
+      <a
+        href="#about"
+        class="group inline-flex items-center gap-2 px-7 py-3 text-sm font-medium text-slate-600 bg-slate-50 rounded-lg hover:bg-slate-100 transition-all duration-200"
+      >
+        Learn More
+        <span class="transition-transform group-hover:translate-y-0.5" set:html={chevronDown} />
+      </a>
+    </div>
+
+    <div class="mt-16 pt-8 animate-fade-in delay-500">
+      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-sm text-slate-400">
+        <span class="flex items-center gap-2">
+          <span class="w-1 h-1 rounded-full bg-slate-300" />
+          Humble in spirit
+        </span>
+        <span class="flex items-center gap-2">
+          <span class="w-1 h-1 rounded-full bg-slate-300" />
+          Rigorous in practice
+        </span>
+        <span class="flex items-center gap-2">
+          <span class="w-1 h-1 rounded-full bg-slate-300" />
+          Open by default
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

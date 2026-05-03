@@ -1,0 +1,67 @@
+# Munglabs Blog + Comments Plan
+
+## Architecture
+- **Monolith repo** — No separate BE needed
+- **Posts → Astro Content Collections (MDX)** — Files in `src/content/blog/`
+- **Comments → Giscus** — GitHub Discussions-powered, zero backend
+
+## Stack
+- Astro Content Collections (schema validation, automatic routing)
+- MDX for blog posts (supports JSX components inline)
+- Giscus React component for comments
+- Same design system (blue theme, Inter font, animations)
+
+## Giscus Setup Required
+1. Create or enable GitHub Discussions on a repo (e.g., `munglabs/munglabs-comments`)
+2. Install Giscus app on that repo: https://giscus.app
+3. Use generated config in `Giscus.tsx` component
+
+## Implementation Steps
+- [x] Write plan
+- [x] Add `src/content.config.ts` with blog collection schema
+- [x] Install `@astrojs/mdx` integration
+- [x] Create `src/content/blog/` directory
+- [x] Create `Giscus.tsx` React component
+- [x] Create `BlogPostLayout.astro`
+- [x] Create `src/pages/blog/index.astro` (list page)
+- [x] Create `src/pages/blog/[...slug].astro` (post page)
+- [x] Add "Blog" link to navbar
+- [x] Create sample `.mdx` post
+- [x] Verify build (3 pages: homepage, blog list, blog post)
+
+## File Structure
+```
+src/
+├── content/
+│   └── blog/
+│       └── welcome-to-munglabs.mdx
+├── content.config.ts
+├── components/
+│   ├── Giscus.tsx
+│   └── ...existing
+├── layouts/
+│   ├── BlogPostLayout.astro
+│   └── BaseLayout.astro
+├── pages/
+│   └── blog/
+│       ├── index.astro
+│       └── [...slug].astro
+└── styles/
+    └── global.css
+```
+
+## Blog Post Schema (Frontmatter)
+- title: string
+- description: string
+- date: ISO date
+- tags: string[]
+- coverImage?: string
+
+## Giscus Config (placeholder, update with real values from giscus.app)
+- repo: "munglabs/munglabs-comments"
+- repoId: (from giscus.app)
+- category: "Announcements"
+- categoryId: (from giscus.app)
+- mapping: "pathname"
+- reactions: enabled
+- theme: "light" / "dark"

@@ -1,0 +1,39 @@
+---
+import MenuToggle from './MenuToggle';
+
+const { links = [] } = Astro.props;
+---
+
+<nav class="fixed top-0 w-full bg-white/80 backdrop-blur-lg border-b border-slate-100 z-50 animate-fade-in">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mung-500 to-mung-700 flex items-center justify-center">
+          <span class="text-white font-bold text-sm font-mono">M</span>
+        </div>
+        <span class="text-lg font-semibold text-slate-900 tracking-tight">
+          mung<span class="text-mung-600">labs</span>
+        </span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        {links.map(link => (
+          <a
+            href={link.href}
+            class="text-sm text-slate-500 hover:text-slate-900 transition-colors duration-200"
+          >
+            {link.label}
+          </a>
+        ))}
+        <a
+          href="#cta"
+          class="ml-2 px-4 py-2 text-sm font-medium text-white bg-mung-600 rounded-lg hover:bg-mung-700 transition-colors duration-200 shadow-sm"
+        >
+          Get in Touch
+        </a>
+      </div>
+
+      <MenuToggle client:load />
+    </div>
+  </div>
+</nav>

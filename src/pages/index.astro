@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+
+const navLinks = [
+  { label: 'About', href: '#about' },
+  { label: 'Blog', href: '/blog' },
+];
+
+const footerLinks = [
+  { label: 'GitHub', href: 'https://github.com/munglabs' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@MungNgulik' },
+  { label: 'Contact', href: 'mailto:munglabs.com@gmail.com' },
+];
+---
+
+<BaseLayout title="Munglabs — Just a Lab">
+  <Navbar links={navLinks} />
+  <main id="main">
+    <Hero
+      titleLine1="Just a lab."
+      titleLine2="Serious stuff inside."
+      subtitle="Munglabs is a humble space for AI research, electronics, DIY tinkering, software tools, and content creation. Where curiosity meets implementation."
+      ctaText="See What We Build"
+      ctaLink="#about"
+    />
+    <Features />
+    <CTA
+      title="Want to collaborate?"
+      subtitle="We're always open to interesting projects, ideas, and conversations. Reach out."
+      buttonText="Get in Touch"
+      buttonLink="mailto:munglabs.com@gmail.com"
+    />
+  </main>
+  <Footer links={footerLinks} />
+</BaseLayout>
