@@ -1,6 +1,7 @@
 ---
 import MenuToggle from './MenuToggle';
 import Iconify from './Iconify';
+import NavbarSearch from './NavbarSearch';
 
 const { links = [] } = Astro.props;
 
@@ -8,8 +9,6 @@ const mobileLinks = [
   { label: 'Home', href: '/', newTab: false },
   { label: 'About', href: '#about', newTab: false },
   { label: 'Blog', href: '/blog', newTab: false },
-  { label: 'GitHub', href: 'https://github.com/munglabs', newTab: true },
-  { label: 'YouTube', href: 'https://www.youtube.com/@MungNgulik', newTab: true },
 ];
 ---
 
@@ -51,6 +50,7 @@ const mobileLinks = [
           >
             <Iconify client:load icon="simple-icons:youtube" />
           </a>
+          <NavbarSearch client:load />
         </div>
         <a
           href="#cta"
@@ -60,7 +60,28 @@ const mobileLinks = [
         </a>
       </div>
 
-      <MenuToggle client:load isOpen={false} onToggle={() => {}} />
+      <div class="flex md:hidden items-center gap-1">
+        <a
+          href="https://github.com/munglabs"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-2 text-slate-400 hover:text-slate-900 transition-colors rounded-lg hover:bg-slate-100"
+          aria-label="GitHub"
+        >
+          <Iconify client:load icon="simple-icons:github" />
+        </a>
+        <a
+          href="https://www.youtube.com/@MungNgulik"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-2 text-slate-400 hover:text-slate-900 transition-colors rounded-lg hover:bg-slate-100"
+          aria-label="YouTube"
+        >
+          <Iconify client:load icon="simple-icons:youtube" />
+        </a>
+        <NavbarSearch client:load />
+        <MenuToggle client:load isOpen={false} onToggle={() => {}} />
+      </div>
     </div>
 
     <div id="mobile-menu" class="md:hidden pb-4 border-t border-slate-100 pt-4" style="display: none;">
