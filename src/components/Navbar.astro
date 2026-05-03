@@ -1,22 +1,29 @@
 ---
 import MenuToggle from './MenuToggle';
+import Iconify from './Iconify';
 
 const { links = [] } = Astro.props;
+
+const mobileLinks = [
+  { label: 'Home', href: '/', newTab: false },
+  { label: 'About', href: '#about', newTab: false },
+  { label: 'Blog', href: '/blog', newTab: false },
+  { label: 'GitHub', href: 'https://github.com/munglabs', newTab: true },
+  { label: 'YouTube', href: 'https://www.youtube.com/@MungNgulik', newTab: true },
+];
 ---
 
 <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-lg border-b border-slate-100 z-50 animate-fade-in">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="flex items-center justify-between h-16">
-      <a href="/" class="flex items-center gap-2.5 group">
-        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-mung-500 to-mung-700 flex items-center justify-center">
-          <span class="text-white font-bold text-sm font-mono">M</span>
-        </div>
+    <div id="navbar-inner" class="flex items-center justify-between h-16">
+      <a href="/" class="flex items-center gap-2.5">
+        <img src="/images/logo_munglabs_small.png" alt="Munglabs" class="h-8" />
         <span class="text-lg font-semibold text-slate-900 tracking-tight">
-          mung<span class="text-mung-600">labs</span>
+          MUNG<span class="text-mung-600">LABS</span>
         </span>
       </a>
 
-      <div class="hidden md:flex items-center gap-8">
+      <div class="hidden md:flex items-center gap-6">
         {links.map(link => (
           <a
             href={link.href}
@@ -25,15 +32,72 @@ const { links = [] } = Astro.props;
             {link.label}
           </a>
         ))}
+        <div class="flex items-center gap-3 ml-2 border-l border-slate-200 pl-6">
+          <a
+            href="https://github.com/munglabs"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-slate-400 hover:text-slate-900 transition-colors duration-200"
+            aria-label="GitHub"
+          >
+            <Iconify client:load icon="simple-icons:github" />
+          </a>
+          <a
+            href="https://www.youtube.com/@MungNgulik"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-slate-400 hover:text-slate-900 transition-colors duration-200"
+            aria-label="YouTube"
+          >
+            <Iconify client:load icon="simple-icons:youtube" />
+          </a>
+        </div>
         <a
           href="#cta"
-          class="ml-2 px-4 py-2 text-sm font-medium text-white bg-mung-600 rounded-lg hover:bg-mung-700 transition-colors duration-200 shadow-sm"
+          class="px-4 py-2 text-sm font-medium text-white bg-mung-600 rounded-lg hover:bg-mung-700 transition-colors duration-200 shadow-sm"
         >
           Get in Touch
         </a>
       </div>
 
-      <MenuToggle client:load />
+      <MenuToggle client:load isOpen={false} onToggle={() => {}} />
+    </div>
+
+    <div id="mobile-menu" class="md:hidden pb-4 border-t border-slate-100 pt-4" style="display: none;">
+      {mobileLinks.map(link => (
+        <a
+          href={link.href}
+          class="block py-2 text-sm text-slate-500 hover:text-slate-900 transition-colors"
+          target={link.newTab ? '_blank' : undefined}
+          rel={link.newTab ? 'noopener noreferrer' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="#cta"
+        class="mt-2 block text-center px-4 py-2 text-sm font-medium text-white bg-mung-600 rounded-lg hover:bg-mung-700 transition-colors"
+      >
+        Get in Touch
+      </a>
     </div>
   </div>
+
+  <script is:inline>
+    const toggle = document.querySelector('[aria-label="Toggle menu"]');
+    const menu = document.getElementById('mobile-menu');
+    let isOpen = false;
+
+    toggle?.addEventListener('click', () => {
+      isOpen = !isOpen;
+      menu.style.display = isOpen ? 'block' : 'none';
+    });
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        isOpen = false;
+        menu.style.display = 'none';
+      });
+    });
+  </script>
 </nav>

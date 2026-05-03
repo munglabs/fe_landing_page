@@ -115,3 +115,10 @@ body {
 .delay-600 { animation-delay: 0.6s; }
 .delay-700 { animation-delay: 0.7s; }
 .delay-800 { animation-delay: 0.8s; }
+
+mark {
+  background-color: #fef08a;
+  color: inherit;
+  padding: 0.05rem 0.15rem;
+  border-radius: 0.125rem;
+}
