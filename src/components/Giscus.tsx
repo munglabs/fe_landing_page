@@ -23,7 +23,7 @@ export default function Giscus() {
     script.setAttribute('data-input-position', 'top');
     script.setAttribute('data-theme', 'preferred_color_scheme');
     script.setAttribute('data-lang', 'en');
-    script.setAttribute('data-loading', 'lazy');
+    script.setAttribute('data-loading', 'eager');
 
     containerRef.current.appendChild(script);
   }, []);

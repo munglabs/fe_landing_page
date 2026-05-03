@@ -7,10 +7,13 @@ import Footer from '../../components/Footer.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map(post => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+  return posts.map(post => {
+    const slug = post.id.replace(/\/index$/, '');
+    return {
+      params: { slug },
+      props: { post },
+    };
+  });
 }
 
 const { post } = Astro.props;
@@ -41,6 +44,11 @@ const footerLinks = [
           </a>
         </div>
 
+        {post.data.coverImage && (
+          <div class="mb-10 rounded-xl overflow-hidden">
+            <img src={post.data.coverImage} alt={post.data.title} class="w-full h-auto object-cover" />
+          </div>
+        )}
         <header class="mb-10">
           <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
             {post.data.title}
@@ -70,9 +78,7 @@ const footerLinks = [
           <Content />
         </div>
 
-        <client:load>
-          <Giscus />
-        </client:load>
+        <Giscus client:load />
       </div>
     </article>
   </main>

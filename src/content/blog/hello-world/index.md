@@ -3,6 +3,7 @@ title: "Hello World — Welcome to Munglabs"
 description: "Our first blog post. A humble lab, built entirely with a local AI stack."
 date: 2025-05-03
 tags: ["hello-world", "intro", "local-ai"]
+coverImage: "/images/blog/hello-world/cover.png"
 ---
 
 # Hello World
