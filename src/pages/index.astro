@@ -5,17 +5,13 @@ import Hero from '../components/Hero.astro';
 import Features from '../components/Features.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
+import { footerLinks } from '../data/footerLinks';
 
 const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Blog', href: '/blog' },
 ];
 
-const footerLinks = [
-  { label: 'GitHub', href: 'https://github.com/munglabs' },
-  { label: 'YouTube', href: 'https://www.youtube.com/@MungNgulik' },
-  { label: 'Contact', href: 'mailto:contact@munglabs.com' },
-];
 ---
 
 <BaseLayout title="Munglabs — Just a Lab">
