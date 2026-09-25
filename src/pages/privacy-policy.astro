@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { footerLinks } from '../data/footerLinks';
+
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Blog', href: '/blog' },
+];
+---
+
+<BaseLayout title="Privacy Policy — Munglabs">
+  <Navbar links={navLinks} />
+  <main id="main">
+    <article class="pt-28 pb-20 px-6">
+      <div class="max-w-3xl mx-auto">
+        <header class="mb-10">
+          <span class="text-sm font-medium text-mung-600 tracking-wide uppercase">Legal</span>
+          <h1 class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+            Privacy Policy
+          </h1>
+          <p class="mt-4 text-lg text-slate-500">
+            Last updated: September 25, 2026
+          </p>
+        </header>
+
+        <div class="prose prose-slate max-w-none">
+          <p>
+            Munglabs ("we", "us", or "our") operates the website at
+            <a href="https://munglabs.com">https://munglabs.com</a> (the
+            "Website"). This Privacy Policy explains what information we
+            collect, how we use it, and the choices you have when you use the
+            Website.
+          </p>
+
+          <h2>1. Information we collect</h2>
+          <p>We keep our data collection minimal. We only collect:</p>
+          <ul>
+            <li>
+              <strong>Your name and email address from your Google Account</strong>,
+              when you sign in using Sign in with Google (Google OAuth). We
+              only request your name and email — we do not request access to your
+              Gmail, Drive, Contacts, or any other Google data.
+            </li>
+            <li>
+              <strong>Account data you submit to us</strong> when you create an
+              account or contact us (for example, by emailing
+              <a href="mailto:contact@munglabs.com">contact@munglabs.com</a>).
+            </li>
+          </ul>
+          <p>
+            When you sign in with Google, Google provides us with your name and
+            email address. We associate that email address with your account on
+            our services. We do not link the same email to multiple identities
+            and we do not sell, rent, or share your personal information with
+            third parties for marketing purposes.
+          </p>
+
+          <h2>2. How we use your information</h2>
+          <ul>
+            <li>To identify you and create and maintain your account.</li>
+            <li>To provide and improve our services, including personalized features.</li>
+            <li>To respond to your questions and support requests.</li>
+            <li>To detect abuse, prevent fraud, and keep the service secure.</li>
+          </ul>
+
+          <h2>3. Legal basis</h2>
+          <p>
+            We process your personal information where we have your consent (when
+            you sign in), where it is necessary to perform the service you
+            requested, or where we have a legitimate interest in operating and
+            securing our services.
+          </p>
+
+          <h2>4. How we share information</h2>
+          <p>
+            We do not sell your personal information. We may share your name and
+            email with:
+          </p>
+          <ul>
+            <li>
+              <strong>Google</strong>, solely to the extent required to verify
+              your Google sign-in (Google receives your name and email as the
+              account holder; we do not send them elsewhere).
+            </li>
+            <li>Service providers who help us operate the service (for example,
+              hosting), under contractual obligations to protect your data.</li>
+            <li>Authorities, where required by law or to protect our rights.</li>
+          </ul>
+
+          <h2>5. Third-party services on this site</h2>
+          <p>
+            This Website uses the following third-party technologies, each of
+            which may collect information as described in their own privacy
+            policies:
+          </p>
+          <ul>
+            <li>
+              <strong>Google Sign-In (OAuth)</strong> — handles your sign-in at
+              Google. Google may collect information about your interaction with
+              the sign-in flow. See Google's
+              <a href="https://policies.google.com/privacy">Privacy Policy</a>.
+            </li>
+            <li>
+              <strong>Giscus</strong> (comments on blog posts) — comment threads
+              are stored on and served from GitHub. Giscus uses a GitHub account
+              to authenticate commenters and sets cookies for that purpose. See
+              Giscus'
+              <a href="https://giscus.app/privacy-policy.html">Privacy Policy</a>
+              and
+              <a href="https://docs.github.com/en/site-policy/github-terms/github-terms-of-service">GitHub's Terms</a>.
+            </li>
+            <li>
+              <strong>Google Fonts</strong> — web fonts are served by Google.
+              Browsers may share your IP address and user agent with Google when
+              loading fonts.
+            </li>
+          </ul>
+          <p>We do not run web analytics (such as Google Analytics) on this Website.</p>
+
+          <h2>6. Cookies</h2>
+          <p>
+            We use strictly necessary session cookies to keep you signed in.
+            Third parties (Giscus, Google) may set their own cookies as
+            described above. You can control cookies through your browser
+            settings.
+          </p>
+
+          <h2>7. Data retention</h2>
+          <p>
+            We keep your account information (name and email) for as long as
+            your account is active. You can request deletion of your account and
+            associated data at any time by contacting us.
+          </p>
+
+          <h2>8. Your rights</h2>
+          <p>
+            Depending on where you live, you may have the right to access,
+            correct, export, or delete your personal data, and to object to or
+            restrict its processing. To exercise any of these rights, email us
+            at <a href="mailto:contact@munglabs.com">contact@munglabs.com</a>.
+          </p>
+
+          <h2>9. Children's privacy</h2>
+          <p>
+            Our services are not directed to children under 13 (or the
+            equivalent minimum age in your jurisdiction), and we do not
+            knowingly collect personal information from them.
+          </p>
+
+          <h2>10. Security</h2>
+          <p>
+            We use reasonable technical and organizational measures to protect
+            your personal information, including encryption in transit (HTTPS).
+          </p>
+
+          <h2>11. Changes to this policy</h2>
+          <p>
+            We may update this Privacy Policy from time to time. The Last
+            updated date at the top of this page reflects the most recent
+            revision. Material changes will be posted on this page.
+          </p>
+
+          <h2>12. Contact</h2>
+          <p>
+            If you have questions about this Privacy Policy, contact us at
+            <a href="mailto:contact@munglabs.com">contact@munglabs.com</a>.
+          </p>
+        </div>
+      </div>
+    </article>
+  </main>
+  <Footer links={footerLinks} />
+</BaseLayout>

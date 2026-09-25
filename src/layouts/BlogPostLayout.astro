@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import { footerLinks } from '../data/footerLinks';
 
 interface Props {
   title: string;
@@ -10,11 +11,6 @@ interface Props {
 
 const { title, description } = Astro.props;
 
-const footerLinks = [
-  { label: 'GitHub', href: 'https://github.com/munglabs' },
-  { label: 'YouTube', href: 'https://www.youtube.com/@MungNgulik' },
-  { label: 'Contact', href: 'mailto:contact@munglabs.com' },
-];
 
 const navLinks = [
   { label: 'Home', href: '/' },

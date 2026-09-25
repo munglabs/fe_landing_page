@@ -4,6 +4,7 @@ import Giscus from '../../components/Giscus';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
+import { footerLinks } from '../../data/footerLinks';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -25,11 +26,6 @@ const navLinks = [
   { label: 'Blog', href: '/blog' },
 ];
 
-const footerLinks = [
-  { label: 'GitHub', href: 'https://github.com/munglabs' },
-  { label: 'YouTube', href: 'https://www.youtube.com/@MungNgulik' },
-  { label: 'Contact', href: 'mailto:contact@munglabs.com' },
-];
 ---
 
 <BaseLayout title={`${post.data.title} — Munglabs`}>
